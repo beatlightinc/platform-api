@@ -26,7 +26,7 @@ class OutroAPI {
         method: 'POST'
       });
       debugger;
-      return JSON.stringify(response.body);
+      return JSON.parse(response.body);
     }
     catch (e) {
       throw new Error(`post to ${endpoint} failed: ${e.message}`)
