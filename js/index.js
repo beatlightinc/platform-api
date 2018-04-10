@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class API {
+class OutroAPI {
     static initialize(authToken) {
         this.authToken = authToken;
     }
@@ -82,6 +82,6 @@ class API {
         });
     }
 }
-API.authToken = null;
-API.baseURL = null;
-exports.default = API;
+OutroAPI.authToken = null;
+OutroAPI.baseURL = null;
+exports.default = OutroAPI;

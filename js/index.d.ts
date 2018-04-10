@@ -1,4 +1,4 @@
-declare class API {
+declare class OutroAPI {
     static authToken: string;
     static baseURL: string;
     static initialize(authToken: string): void;
@@ -7,4 +7,4 @@ declare class API {
     static form(endpoint: string, payload: FormData): Promise<any>;
     static get(endpoint: string): Promise<any>;
 }
-export default API;
+export default OutroAPI;
