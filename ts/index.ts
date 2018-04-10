@@ -14,17 +14,22 @@ class API {
     if (!endpoint) {
       throw new Error('No endpoint specified.');
     }
-    const response = await fetch(this.baseURL + endpoint, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.authToken}`
-      },
-      mode: 'cors',
-      body: JSON.stringify(payload),
-      method: 'POST'
-    });
+    try {
+      const response = await fetch(this.baseURL + endpoint, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.authToken}`
+        },
+        mode: 'cors',
+        body: JSON.stringify(payload),
+        method: 'POST'
+      });
 
-    return await response.json();
+      return await response.json();
+    }
+    catch (e) {
+      throw new Error(`post to ${endpoint} failed: ${e.message}`)
+    }
   }
 
   // A POST method that takes form data rather than an object
@@ -33,32 +38,42 @@ class API {
     if (!endpoint) {
       throw new Error('No endpoint specified.');
     }
-    const response = await fetch(this.baseURL + endpoint, {
-      headers: {
-        Authorization: `Bearer ${this.authToken}`
-      },
-      mode: 'cors',
-      body: payload,
-      method: 'POST'
-    });
+    try {
+      const response = await fetch(this.baseURL + endpoint, {
+        headers: {
+          Authorization: `Bearer ${this.authToken}`
+        },
+        mode: 'cors',
+        body: payload,
+        method: 'POST'
+      });
 
-    return await response.json();
+      return await response.json();
+    }
+    catch (e) {
+      throw new Error(`form to ${endpoint} failed: ${e.message}`)
+    }
   }
 
   public static async get(endpoint: string): Promise<any> {
     if (!endpoint) {
       throw new Error('No endpoint specified.');
     }
-    const response = await fetch(this.baseURL + endpoint, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${this.authToken}`
-      },
-      mode: 'cors',
-      method: 'GET'
-    });
+    try {
+      const response = await fetch(this.baseURL + endpoint, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${this.authToken}`
+        },
+        mode: 'cors',
+        method: 'GET'
+      });
 
-    return await response.json();
+      return await response.json();
+    }
+    catch (e) {
+      throw new Error(`get from ${endpoint} failed: ${e.message}`)
+    }
   }
 }
 
