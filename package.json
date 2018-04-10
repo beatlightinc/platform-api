@@ -1,7 +1,8 @@
 {
   "name": "platform-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "js/index.js",
+  "types": "js/index.d.ts",
   "repository": "git@github.com:beatlightinc/platform-api.git",
   "author": "Outro",
   "license": "MIT",
