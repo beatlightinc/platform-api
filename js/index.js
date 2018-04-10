@@ -9,8 +9,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const nodeFetch = require("node-fetch");
-if (!window || !window.fetch) {
-    const fetch = nodeFetch;
+const IS_BROWSER = typeof (window) !== 'undefined' ? true : false;
+let request;
+if (!IS_BROWSER) {
+    request = nodeFetch;
+}
+else {
+    request = fetch;
 }
 class OutroAPI {
     static initialize(authToken) {
@@ -25,7 +30,7 @@ class OutroAPI {
                 throw new Error('No endpoint specified.');
             }
             try {
-                const response = yield fetch(this.baseURL + endpoint, {
+                const response = yield request(this.baseURL + endpoint, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${this.authToken}`
@@ -49,7 +54,7 @@ class OutroAPI {
                 throw new Error('No endpoint specified.');
             }
             try {
-                const response = yield fetch(this.baseURL + endpoint, {
+                const response = yield request(this.baseURL + endpoint, {
                     headers: {
                         Authorization: `Bearer ${this.authToken}`
                     },
@@ -70,7 +75,7 @@ class OutroAPI {
                 throw new Error('No endpoint specified.');
             }
             try {
-                const response = yield fetch(this.baseURL + endpoint, {
+                const response = yield request(this.baseURL + endpoint, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${this.authToken}`
