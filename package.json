@@ -7,6 +7,8 @@
   "author": "Outro",
   "license": "MIT",
   "dependencies": {
+    "@types/got": "^7.1.8",
+    "got": "^8.3.0",
     "ts-lint": "^4.5.1",
     "typescript": "^2.8.1"
   },

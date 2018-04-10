@@ -1,3 +1,5 @@
+import * as fetch from 'got';
+
 class OutroAPI {
   public static authToken: string = null;
   public static baseURL: string = null;
@@ -20,12 +22,11 @@ class OutroAPI {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.authToken}`
         },
-        mode: 'cors',
         body: JSON.stringify(payload),
         method: 'POST'
       });
-
-      return await response.json();
+      debugger;
+      return JSON.stringify(response.body);
     }
     catch (e) {
       throw new Error(`post to ${endpoint} failed: ${e.message}`)
@@ -43,12 +44,12 @@ class OutroAPI {
         headers: {
           Authorization: `Bearer ${this.authToken}`
         },
-        mode: 'cors',
+        form: true,
         body: payload,
         method: 'POST'
       });
 
-      return await response.json();
+      return JSON.parse(response.body);
     }
     catch (e) {
       throw new Error(`form to ${endpoint} failed: ${e.message}`)
@@ -65,11 +66,10 @@ class OutroAPI {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.authToken}`
         },
-        mode: 'cors',
         method: 'GET'
       });
 
-      return await response.json();
+      return JSON.parse(response.body);
     }
     catch (e) {
       throw new Error(`get from ${endpoint} failed: ${e.message}`)
