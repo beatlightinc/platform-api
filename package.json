@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "git@github.com:beatlightinc/platform-api.git",
-  "author": "Mike <mikevespi@gmail.com>",
+  "author": "Outro",
   "license": "MIT",
   "dependencies": {
     "ts-lint": "^4.5.1",
     "typescript": "^2.8.1"
+  },
+  "scripts": {
+    "build": "tsc"
   }
 }
