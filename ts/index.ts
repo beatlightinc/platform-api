@@ -1,3 +1,9 @@
+import * as nodeFetch from 'node-fetch';
+
+if (!window || !window.fetch) {
+  const fetch = nodeFetch;
+}
+
 class OutroAPI {
   public static authToken: string = null;
   public static baseURL: string = null;

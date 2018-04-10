@@ -7,6 +7,8 @@
   "author": "Outro",
   "license": "MIT",
   "dependencies": {
+    "@types/node-fetch": "^1.6.8",
+    "node-fetch": "^2.1.2",
     "ts-lint": "^4.5.1",
     "typescript": "^2.8.1"
   },

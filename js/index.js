@@ -8,6 +8,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const nodeFetch = require("node-fetch");
+if (!window || !window.fetch) {
+    const fetch = nodeFetch;
+}
 class OutroAPI {
     static initialize(authToken) {
         this.authToken = authToken;
