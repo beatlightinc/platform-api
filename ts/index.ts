@@ -1,4 +1,4 @@
-class API {
+class OutroAPI {
   public static authToken: string = null;
   public static baseURL: string = null;
 
@@ -77,4 +77,4 @@ class API {
   }
 }
 
-export default API;
+export default OutroAPI;
