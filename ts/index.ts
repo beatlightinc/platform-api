@@ -88,6 +88,4 @@ class OutroAPI {
   }
 }
 
-// So that we can import it easily in node and ES6
 export default OutroAPI;
-module.exports = OutroAPI;

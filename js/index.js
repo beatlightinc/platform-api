@@ -93,6 +93,4 @@ class OutroAPI {
 }
 OutroAPI.authToken = null;
 OutroAPI.baseURL = null;
-// So that we can import it easily in node and ES6
 exports.default = OutroAPI;
-module.exports = OutroAPI;
