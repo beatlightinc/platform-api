@@ -1,3 +1,14 @@
+import * as nodeFetch from 'node-fetch';
+
+const IS_BROWSER = typeof(window) !== 'undefined' ? true : false;
+let request: any;
+
+if (!IS_BROWSER) {
+  request = nodeFetch;
+} else {
+  request = fetch;
+}
+
 class OutroAPI {
   public static authToken: string = null;
   public static baseURL: string = null;
@@ -15,7 +26,7 @@ class OutroAPI {
       throw new Error('No endpoint specified.');
     }
     try {
-      const response = await fetch(this.baseURL + endpoint, {
+      const response = await request(this.baseURL + endpoint, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.authToken}`
@@ -39,7 +50,7 @@ class OutroAPI {
       throw new Error('No endpoint specified.');
     }
     try {
-      const response = await fetch(this.baseURL + endpoint, {
+      const response = await request(this.baseURL + endpoint, {
         headers: {
           Authorization: `Bearer ${this.authToken}`
         },
@@ -60,7 +71,7 @@ class OutroAPI {
       throw new Error('No endpoint specified.');
     }
     try {
-      const response = await fetch(this.baseURL + endpoint, {
+      const response = await request(this.baseURL + endpoint, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${this.authToken}`
@@ -77,4 +88,6 @@ class OutroAPI {
   }
 }
 
+// So that we can import it easily in node and ES6
 export default OutroAPI;
+module.exports = OutroAPI;

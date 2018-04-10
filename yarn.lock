@@ -2,6 +2,16 @@
 # yarn lockfile v1
 
 
+"@types/node-fetch@^1.6.8":
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-1.6.8.tgz#a59d8c75b300ddc3ca3eef23d449d677f9486c3d"
+  dependencies:
+    "@types/node" "*"
+
+"@types/node@*":
+  version "9.6.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.3.tgz#f5fd440f8a9867b65ae76d442e269622a1db00b5"
+
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -120,6 +130,10 @@ js-tokens@^3.0.2:
 minimist@~0.0.1:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-0.0.10.tgz#de3f98543dbf96082be48ad1a0c7cda836301dcf"
+
+node-fetch@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.1.2.tgz#ab884e8e7e57e38a944753cec706f788d1768bb5"
 
 once@^1.3.0:
   version "1.4.0"
