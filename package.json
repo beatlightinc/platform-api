@@ -1,0 +1,8 @@
+{
+  "name": "platform-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:beatlightinc/platform-api.git",
+  "author": "Mike <mikevespi@gmail.com>",
+  "license": "MIT"
+}
