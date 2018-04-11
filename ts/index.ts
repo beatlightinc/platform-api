@@ -9,7 +9,7 @@ if (!IS_BROWSER) {
   request = fetch;
 }
 
-class OutroAPI {
+export class OutroAPI {
   public static authToken: string = null;
   public static baseURL: string = null;
 
@@ -88,4 +88,4 @@ class OutroAPI {
   }
 }
 
-export default OutroAPI;
+
