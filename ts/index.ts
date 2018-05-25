@@ -39,7 +39,7 @@ class OutroAPI {
       return await response.json();
     }
     catch (e) {
-      throw new Error(`post to ${endpoint} failed: ${e.message}`)
+      throw new Error(`post to ${endpoint} failed: ${e.message}`);
     }
   }
 
@@ -62,8 +62,37 @@ class OutroAPI {
       return await response.json();
     }
     catch (e) {
-      throw new Error(`form to ${endpoint} failed: ${e.message}`)
+      throw new Error(`form to ${endpoint} failed: ${e.message}`);
     }
+  }
+
+  public static async upload(endpoint: string, payload: FormData, onProgress: (percent: number) => void): Promise<any> {
+    return new Promise((resolve, reject) => {
+      if (!endpoint) {
+        throw new Error('No endpoint specified');
+      }
+
+      try {
+        const req = new XMLHttpRequest();
+
+        req.upload.addEventListener('progress', (e: ProgressEvent) => {
+          const percent = e.loaded / e.total * 100;
+          onProgress(percent);
+        });
+
+        req.addEventListener('load', () => {
+          resolve(JSON.parse(req.response));
+        });
+
+        req.open('POST', this.baseURL + endpoint);
+        req.setRequestHeader('Authorization', `Bearer ${this.authToken}`);
+        req.send(payload);
+      }
+
+      catch (err) {
+        reject(err);
+      }
+    });
   }
 
   public static async get(endpoint: string): Promise<any> {
@@ -83,7 +112,7 @@ class OutroAPI {
       return await response.json();
     }
     catch (e) {
-      throw new Error(`get from ${endpoint} failed: ${e.message}`)
+      throw new Error(`get from ${endpoint} failed: ${e.message}`);
     }
   }
 }
