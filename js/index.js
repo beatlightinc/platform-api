@@ -69,6 +69,31 @@ class OutroAPI {
             }
         });
     }
+    static upload(endpoint, payload, onProgress) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return new Promise((resolve, reject) => {
+                if (!endpoint) {
+                    throw new Error('No endpoint specified');
+                }
+                try {
+                    const req = new XMLHttpRequest();
+                    req.upload.addEventListener('progress', (e) => {
+                        const percent = e.loaded / e.total * 100;
+                        onProgress(percent);
+                    });
+                    req.addEventListener('load', () => {
+                        resolve(JSON.parse(req.response));
+                    });
+                    req.open('POST', this.baseURL + endpoint);
+                    req.setRequestHeader('Authorization', `Bearer ${this.authToken}`);
+                    req.send(payload);
+                }
+                catch (err) {
+                    reject(err);
+                }
+            });
+        });
+    }
     static get(endpoint) {
         return __awaiter(this, void 0, void 0, function* () {
             if (!endpoint) {
