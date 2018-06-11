@@ -81,7 +81,11 @@ class OutroAPI {
         });
 
         req.addEventListener('load', () => {
-          resolve(JSON.parse(req.response));
+          if (req.status !== 200) {
+            reject(JSON.parse(req.response));
+          } else {
+            resolve(JSON.parse(req.response));
+          }
         });
 
         req.open('POST', this.baseURL + endpoint);
